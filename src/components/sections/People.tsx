@@ -7,7 +7,7 @@ import { movedPointer, useMagnetic, useTilt } from '../../lib/hooks'
 import { Head } from '../Head'
 import { section, wrap } from './Story'
 import { routeHref } from '../../lib/router'
-import portrait from '../../assets/rishu-mondal.webp'
+import portrait from '../../assets/rishu-coding.webp'
 
 /* ---------- Customers: cards fold up into place, then lean toward the pointer ---------- */
 const customerIcons = [Store, Hospital, Warehouse]
@@ -285,9 +285,9 @@ export function About() {
                 <div data-layer-photo className="absolute -inset-4">
                   <img
                     src={portrait}
-                    alt={`${about.name}, ${about.role.toLowerCase()}`}
-                    width={816}
-                    height={1020}
+                    alt={`Illustration of ${about.name} writing code in a dark room, face hidden in shadow`}
+                    width={1088}
+                    height={1360}
                     decoding="async"
                     className="size-full object-cover object-[50%_30%]"
                   />

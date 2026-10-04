@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { ArrowDown, ArrowLeft, Braces, Check, Copy, Mail, MessageCircle, RotateCcw, ShieldCheck, Trophy } from 'lucide-react'
 import clsx from 'clsx'
 import { about, aboutMe } from '../../content'
-import portrait from '../../assets/rishu-mondal.webp'
+import portrait from '../../assets/rishu-coding.webp'
 import { gsap, MQ, revealWords, ScrollTrigger, useGSAP } from '../../lib/gsap'
 import { useMagnetic, useSpotlight } from '../../lib/hooks'
 import { onPageShown, routeHref } from '../../lib/router'
@@ -170,7 +170,7 @@ function Hero() {
       {/* portrait: full-bleed behind on phones, the right half on large screens */}
       <div data-photo aria-hidden className="absolute inset-y-0 right-0 w-full will-change-transform md:w-[56%]">
         <div data-photo-inner className="absolute inset-0">
-          <img src={portrait} alt="" width={816} height={1020} decoding="async" className="size-full object-cover object-[50%_22%] opacity-50 md:opacity-90" />
+          <img src={portrait} alt="" width={1088} height={1360} decoding="async" className="size-full object-cover object-[74%_22%] opacity-50 md:opacity-90" />
         </div>
         <div className="absolute inset-0 bg-[linear-gradient(90deg,var(--background),hsl(236_52%_6%/.35)_45%,transparent_75%)] max-md:bg-[linear-gradient(180deg,hsl(236_52%_6%/.55),transparent_35%)]" />
         <div className="absolute inset-0 bg-[linear-gradient(transparent_45%,var(--background))]" />
