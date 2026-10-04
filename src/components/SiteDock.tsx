@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { CircleHelp, House, Layers, Route, ShoppingCart, Smartphone, UserRound, Users } from 'lucide-react'
+import { Briefcase, CircleHelp, House, Layers, Route, ShoppingCart, Smartphone, UserRound, Users } from 'lucide-react'
 import { links, nav } from '../content'
 import { gsap, hasFinePointer, MQ, prefersReducedMotion, ScrollTrigger, useGSAP } from '../lib/gsap'
 import { onPageShown } from '../lib/router'
@@ -19,6 +19,8 @@ export function SiteDock() {
       return { icon: <Icon className={ico} strokeWidth={1.8} />, label: l.label, href: l.href }
     }),
     { icon: <UserRound className={ico} strokeWidth={1.8} />, label: nav.about.label, href: nav.about.href },
+    // opens the Careers page
+    { icon: <Briefcase className={ico} strokeWidth={1.8} />, label: nav.careers.label, href: nav.careers.href },
     // the primary action joins the dock from small tablets up; on phones it stays in the top bar
     { icon: <ShoppingCart className={ico} strokeWidth={2} />, label: nav.cta, href: links.live, external: true, tone: 'accent', separatorBefore: true, className: 'max-sm:hidden' },
   ]

@@ -22,6 +22,17 @@ npm run build:single   # everything inlined into one dist/index.html
 - The landing page, and an **About me** page at `#/about-me` (`src/components/aboutme/AboutMePage.tsx`), opened from the "About me" button in the About section.
 - The first load and every page switch use the same curtain (`src/components/PageCurtain.tsx`): on first load the page name rises in while the gradient rule under it fills with real loading progress, then the curtain lifts. The hash router is in `src/lib/router.ts` and `src/App.tsx`. Browser back and forward work.
 - The About me form opens the visitor's mail app or WhatsApp with their message filled in. Where it sends is `aboutMe.contact` in `src/content.ts`.
+- A **Careers** page at `#/careers` (`src/components/careers/CareersPage.tsx`), opened from the dock and the footer. Every job also has its own link, `#/careers/<job id>`, that opens the page with that job expanded, ready to share. The application form works like the About me form: it opens the visitor's mail app or WhatsApp with the application filled in, and they attach their CV. Where it sends is `careers.contact` in `src/content.ts`.
+
+## Posting a job
+
+Job posts live in `src/jobs.ts`. To post one, copy an entry, change the details and deploy (on Vercel, pushing to `main` is enough).
+
+- `id` becomes the job's link, so keep it short, lowercase and unique (`sales-executive`).
+- Dates are `'YYYY-MM-DD'`. The newest `posted` shows first.
+- Give a job a `deadline` and it takes itself down the day after. Or delete the entry.
+- `salary` and `niceToHave` are optional.
+- With no open jobs, the page says so and still takes general applications.
 
 ## Performance notes
 

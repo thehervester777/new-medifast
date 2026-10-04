@@ -6,6 +6,7 @@ import { Sheet } from './components/Ambient'
 import { SiteDock } from './components/SiteDock'
 import { PageCurtain, type CurtainHandle } from './components/PageCurtain'
 import { AboutMePage } from './components/aboutme/AboutMePage'
+import { CareersPage } from './components/careers/CareersPage'
 import { Categories, HowItWorks, Platform } from './components/sections/Story'
 import { TheApp } from './components/sections/AppSection'
 import { About, Customers, Faq } from './components/sections/People'
@@ -141,7 +142,7 @@ export default function App() {
 
   return (
     <>
-      {route === 'about-me' ? <AboutMePage /> : <Landing />}
+      {route === 'about-me' ? <AboutMePage /> : route === 'careers' ? <CareersPage /> : <Landing />}
       <PageCurtain ref={curtain} initial={route} />
     </>
   )

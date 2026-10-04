@@ -1,12 +1,19 @@
 import { onIntroDone } from './intro'
 
-/** Two pages, addressed by the URL hash: the landing page and the About me page (#/about-me). */
-export type Route = 'home' | 'about-me'
+/** Pages, addressed by the URL hash: the landing page, About me (#/about-me) and Careers (#/careers,
+    or #/careers/<job id> to open one job). */
+export type Route = 'home' | 'about-me' | 'careers'
 
-export const routeHref: Record<Route, string> = { home: '#/', 'about-me': '#/about-me' }
+export const routeHref: Record<Route, string> = { home: '#/', 'about-me': '#/about-me', careers: '#/careers' }
 
 export function readRoute(): Route {
-  return window.location.hash.startsWith('#/about-me') ? 'about-me' : 'home'
+  const h = window.location.hash
+  return h.startsWith('#/about-me') ? 'about-me' : h.startsWith('#/careers') ? 'careers' : 'home'
+}
+
+/** The job named in the address (#/careers/<job id>), if any. */
+export function jobIdFromHash(): string | undefined {
+  return /^#\/careers\/([a-z0-9-]+)/i.exec(window.location.hash)?.[1]
 }
 
 // While the page curtain covers the screen, a freshly mounted page holds its entrance

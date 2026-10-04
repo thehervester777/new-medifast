@@ -240,7 +240,7 @@ html.lenis-scrolling body { pointer-events: none; }
 }
 
 /* decorative loops stop while their area is off screen (set by a ScrollTrigger in App) */
-.is-offscreen .blob { animation-play-state: paused; }
+.is-offscreen .blob, .is-offscreen [class*="animate-ping"] { animation-play-state: paused; }
 
 @media (prefers-reduced-motion: reduce) {
   .blob { animation: none !important; }

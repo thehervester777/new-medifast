@@ -24,6 +24,7 @@ export const nav = {
   // dock order: Home, the sections, About; the primary action sits after a divider
   home: { label: 'Home', href: '#top' },
   about: { label: 'About', href: '#about' },
+  careers: { label: 'Careers', href: '#/careers' },
   links: [
     { label: 'How it works', href: '#how' },
     { label: 'Platform', href: '#platform' },
@@ -204,6 +205,77 @@ export const aboutMe = {
   closing: 'No credentials. Just the work.',
 }
 
+// The Careers page (opens at #/careers). The job posts themselves live in src/jobs.ts.
+export const careers = {
+  title: 'Careers — MediFast',
+  kicker: 'Careers at MediFast',
+  big: ['Join', 'us.'],
+  line: "We're changing how medicine reaches every pharmacy. Come build it with us.",
+  cue: 'See open roles',
+  hiring: 'Now hiring',
+  why: {
+    label: 'Why MediFast',
+    items: [
+      { title: 'Work that matters', body: 'Every order we get right puts medicine on a pharmacy shelf, on time and at a fair price.' },
+      { title: 'Real ownership', body: "Small team, big scope. You own problems from start to finish, not a ticket in someone else's plan." },
+      { title: 'Grow with us', body: "We're early. The people who join now shape how MediFast works for years." },
+      { title: 'Straight talk', body: 'No politics and no endless meetings. Say what you think, then get on with the work.' },
+    ],
+  },
+  roles: {
+    label: 'Open roles',
+    heading: ['Open', 'roles.'],
+    all: 'All teams',
+    posted: 'Posted',
+    deadline: 'Apply by',
+    about: 'About the role',
+    do: "What you'll do",
+    need: 'What you need',
+    nice: 'Nice to have',
+    apply: 'Apply for this role',
+    copy: 'Copy link',
+    copied: 'Link copied',
+    closed: "That role has closed or been filled. Here's what's open right now.",
+    empty: {
+      heading: 'No open roles right now.',
+      body: "We're always glad to hear from good people. Send a general application below and we'll keep you in mind.",
+    },
+  },
+  form: {
+    label: 'Apply',
+    heading: ['Send it', 'our way.'],
+    intro: "No portals and no twelve-step forms. Tell us who you are and why you'd be good at this. A few lines is enough.",
+    roleLabel: 'Which role?',
+    general: 'General application',
+    name: 'Your name',
+    contact: 'Email or phone number',
+    link: 'CV, LinkedIn or portfolio link (optional)',
+    message: 'Why you? A few lines is enough',
+    email: 'Apply by email',
+    whatsapp: 'Apply on WhatsApp',
+    errors: {
+      role: 'Pick a role, or choose a general application.',
+      name: 'Add your name.',
+      contact: 'Add an email or phone number so we can reply.',
+      message: 'Tell us a little about yourself.',
+    },
+    sent: {
+      heading: 'Almost there.',
+      email: 'Your mail app has opened with your application filled in. Attach your CV, then press send.',
+      whatsapp: 'WhatsApp has opened with your application filled in. Press send, then share your CV in the chat.',
+      fallback: 'Nothing opened? Copy your application and send it with your CV to',
+      copy: 'Copy application',
+      copied: 'Copied',
+      again: 'Start over',
+    },
+  },
+  // where applications go: MediFast's support inbox and office number for now
+  contact: { email: 'getsupport@medifastbd.com', whatsapp: '8801952677396' },
+  back: 'Back to MediFast',
+  closing: "Don't see your role? Write to us anyway.",
+  closingCta: 'Send a general application',
+}
+
 export const cta = {
   heading: 'Ready to order at wholesale rates?',
   line: 'Register with your trade and drug licence, and start ordering once your account is verified.',
@@ -218,6 +290,7 @@ export const footer = {
       { label: 'The app', href: '#app' },
       { label: 'FAQ', href: '#faq' },
       { label: 'About', href: '#about' },
+      { label: 'Careers', href: '#/careers' },
     ],
   },
   office: {

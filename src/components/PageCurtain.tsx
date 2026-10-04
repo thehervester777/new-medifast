@@ -13,7 +13,7 @@ export type CurtainHandle = {
   reveal: (onLift?: () => void) => Promise<void>
 }
 
-const labels: Record<Route, string> = { home: 'MediFast', 'about-me': 'About me' }
+const labels: Record<Route, string> = { home: 'MediFast', 'about-me': 'About me', careers: 'Careers' }
 
 /**
  * The page curtain, used both for the first load and for moving between pages.
