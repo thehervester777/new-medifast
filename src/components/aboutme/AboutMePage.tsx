@@ -17,6 +17,8 @@ const wrap = 'mx-auto w-full max-w-[1280px] px-5 md:px-8'
  */
 export function AboutMePage() {
   const root = useRef<HTMLDivElement>(null)
+  // a matchMedia rebuild (crossing 768px) shows the entrance's end state instead of replaying it
+  const introPlayed = useRef(false)
 
   useEffect(() => {
     document.title = 'About me — Rishu Mondal · MediFast'
@@ -50,7 +52,10 @@ export function AboutMePage() {
           .from(q('[data-w]'), { yPercent: 115, rotate: 7, duration: 1.5, stagger: 0.12 }, 0.25)
           .from(q('[data-line-word]'), { yPercent: 110, duration: 1.1, stagger: 0.035 }, 0.75)
           .from(q('[data-cue]'), { y: 24, autoAlpha: 0, duration: 1 }, 1.15)
-        const offShown = onPageShown(() => intro.play())
+        const offShown = onPageShown(() => {
+          if (introPlayed.current) intro.progress(1)
+          else { introPlayed.current = true; intro.play() }
+        })
 
         // ---- hero depth: the headline lifts away faster than the portrait ----
         gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true } })

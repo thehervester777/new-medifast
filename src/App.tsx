@@ -112,19 +112,23 @@ export default function App() {
   // page switches: curtain up, swap the page behind it, land in the right place, curtain away
   useEffect(() => {
     let busy = false
+    // set once the visitor leaves the landing page for About me (from the button in the About section)
+    let leftFromProfile = false
     const go = async () => {
       const next = readRoute()
       if (busy || next === current.current) return
       busy = true
       const from = current.current
+      if (from === 'home') leftFromProfile = true
       pauseScroll()
       await curtain.current!.cover(next)
       setCovered(true)
       current.current = next
       flushSync(() => setRoute(next))
       ScrollTrigger.refresh()
-      // the About me page opens at its top; coming back lands on the profile you left from
-      jumpTo(next === 'home' && from === 'about-me' ? '#about' : 0)
+      // the About me page opens at its top; coming back lands on the profile you left from,
+      // but a visitor who arrived straight on About me (a shared link) starts the landing page at its top
+      jumpTo(next === 'home' && from === 'about-me' && leftFromProfile ? '#about' : 0)
       await settle()
       resumeScroll()
       await curtain.current!.reveal(() => setCovered(false))

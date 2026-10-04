@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import { Check } from 'lucide-react'
 import { hero } from '../content'
 import { gsap, MQ, SplitText, useGSAP } from '../lib/gsap'
-import { onIntroDone } from '../lib/intro'
+import { onPageShown } from '../lib/router'
 import { movedPointer } from '../lib/hooks'
 import { LiveButton, StoreBadges } from './Brand'
 import { Aurora, StarField } from './Effects'
@@ -10,6 +10,9 @@ import { HeroPhone } from './Screens'
 
 export function Hero() {
   const root = useRef<HTMLElement>(null)
+  // matchMedia rebuilds everything below when a condition flips (e.g. rotating a tablet across 768px);
+  // the entrance has already been seen by then, so a rebuilt timeline jumps to its end instead of replaying
+  const introPlayed = useRef(false)
 
   useGSAP(
     () => {
@@ -40,7 +43,10 @@ export function Hero() {
           .from(q('[data-chip]'), { opacity: 0, x: -40, duration: 1 }, 1.1)
           .from(q('[data-stars]'), { opacity: 0, duration: 2, ease: 'none' }, 0)
           .from(q('[data-aurora]'), { opacity: 0, scale: 0.8, duration: 2.4, ease: 'power2.out' }, 0)
-        const off = onIntroDone(() => tl.play())
+        const off = onPageShown(() => {
+          if (introPlayed.current) tl.progress(1)
+          else { introPlayed.current = true; tl.play() }
+        })
 
         // floating loop
         gsap.to(q('[data-float]'), { y: -12, duration: 3, ease: 'sine.inOut', yoyo: true, repeat: -1, scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', toggleActions: 'play pause resume pause' } })

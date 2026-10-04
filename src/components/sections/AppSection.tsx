@@ -58,6 +58,9 @@ export function TheApp() {
               end: '+=210%',
               pin: true,
               scrub: true,
+              // matchMedia rebuilds this pin after a resize, which puts it after every ScrollTrigger below it.
+              // Setting a priority makes GSAP refresh in page order (pin first), so their positions include the pin spacing.
+              refreshPriority: 1,
               onUpdate: (self) => setActive(Math.min(2, Math.floor(self.progress * 3 * 0.999))),
             },
           })

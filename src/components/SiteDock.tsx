@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import { CircleHelp, House, Layers, Route, ShoppingCart, Smartphone, UserRound, Users } from 'lucide-react'
 import { links, nav } from '../content'
 import { gsap, hasFinePointer, MQ, prefersReducedMotion, ScrollTrigger, useGSAP } from '../lib/gsap'
-import { onIntroDone } from '../lib/intro'
+import { onPageShown } from '../lib/router'
 import { MagnificationDock, type DockItemData } from './MagnificationDock'
 
 const sectionIcons = [Route, Layers, Smartphone, Users, CircleHelp]
@@ -42,11 +42,11 @@ export function SiteDock() {
       })
       setActive('#top')
 
-      // slide up after the intro
+      // slide up once the page is shown (after the intro or a page curtain)
       const mm = gsap.matchMedia()
       mm.add(MQ.motion, () => {
         gsap.set(el, { yPercent: 160, autoAlpha: 0 })
-        return onIntroDone(() =>
+        return onPageShown(() =>
           gsap.timeline({ delay: 0.5 })
             .to(el, { yPercent: 0, autoAlpha: 1, duration: 1.1, ease: 'expo.out' })
             .from(anchors, { scale: 0.6, opacity: 0, duration: 0.7, stagger: 0.04, ease: 'back.out(2)' }, 0.15),

@@ -3,7 +3,7 @@ import { ArrowUpRight } from 'lucide-react'
 import { links, nav } from '../content'
 import { gsap, MQ, ScrollTrigger, useGSAP } from '../lib/gsap'
 import { useMagnetic } from '../lib/hooks'
-import { onIntroDone } from '../lib/intro'
+import { onPageShown } from '../lib/router'
 import { Wordmark } from './Brand'
 
 // open width (aligned with the page content) and the compact island it settles into
@@ -49,9 +49,9 @@ export function Navbar() {
             .fromTo(q('[data-shell]'), { width: openWidth }, { width: islandWidth }, 0)
             .fromTo(q('[data-shell]'), { opacity: 0 }, { opacity: 1, duration: 0.6 }, 0)
 
-          // enter after the intro: logo and button drop in, softly
+          // enter once the page is shown (after the intro or a page curtain): logo and button drop in, softly
           gsap.set(q('[data-in]'), { autoAlpha: 0, y: -18 })
-          return onIntroDone(() =>
+          return onPageShown(() =>
             gsap.to(q('[data-in]'), { autoAlpha: 1, y: 0, duration: 1.1, stagger: 0.08, ease: 'expo.out', delay: 0.3 }),
           )
         }
