@@ -8,7 +8,7 @@ import { MagnificationDock, type DockItemData } from './MagnificationDock'
 const sectionIcons = [Route, Layers, Smartphone, Users, CircleHelp]
 const ico = 'size-[19px] sm:size-[22px]'
 
-/** The site's main navigation: a dock fixed to the bottom of the screen. */
+/** The site's main navigation: a dock fixed to the bottom of the screen (hidden on phones). */
 export function SiteDock() {
   const root = useRef<HTMLDivElement>(null)
 
@@ -59,7 +59,7 @@ export function SiteDock() {
   const magnify = typeof window !== 'undefined' && hasFinePointer() && !prefersReducedMotion() && window.matchMedia('(min-width: 640px)').matches
 
   return (
-    <div ref={root} className="pointer-events-none fixed inset-x-0 bottom-3 z-50 flex justify-center px-3 md:bottom-5">
+    <div ref={root} className="pointer-events-none fixed inset-x-0 bottom-3 z-50 flex justify-center px-3 max-sm:hidden md:bottom-5">
       <div className="pointer-events-auto max-w-full">
         <MagnificationDock items={items} magnify={magnify} magnification={78} distance={190} />
       </div>

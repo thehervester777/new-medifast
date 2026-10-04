@@ -115,7 +115,7 @@ export function Footer() {
           <span>{footer.note}</span>
         </div>
       </div>
-      <div aria-hidden className="pointer-events-none mt-6 select-none overflow-hidden pb-24 md:pb-28">
+      <div aria-hidden className="pointer-events-none mt-6 select-none overflow-hidden pb-10 sm:pb-24 md:pb-28">
         <div
           data-giant
           className="will-change-[transform,opacity] grad-text pb-[1vw] text-center font-display text-[19vw] font-bold leading-none tracking-[-0.06em] opacity-90 [mask-image:linear-gradient(#000_45%,transparent_95%)]"
